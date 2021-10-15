@@ -15,6 +15,29 @@ public class HouseView {
     private char key = ' '; //接收用户选择的选择
     private  HouseService houseService = new HouseService(10);//设置数组的大小为10
 
+
+    //编写addHouse() 接收输入，创建House对象，调用add方法
+    public void addHouse() {
+        System.out.println("===============添加房屋=============");
+        System.out.println("姓名：");
+        String name = Utility.readString(8);
+        System.out.println("电话：");
+        String phone = Utility.readString(12);
+        System.out.println("地址：");
+        String address = Utility.readString(16);
+        System.out.println("月租：");
+        int rent = Utility.readInt();
+        System.out.println("状态：");
+        String state = Utility.readString(3);
+        //创建一个House对象，注意id是系统分配，用户不能输入
+        House newHouse= new House(0,name,phone,address,rent,state);
+        if (houseService.add(newHouse)){
+            System.out.println("===============添加房屋成功=============");
+        }else{
+            System.out.println("===============添加房屋失败=============");
+        }
+    }
+
     //编写listHoses()显示房屋列表
     public void listHoses() {
         System.out.println("===============房屋列表=============");
@@ -43,7 +66,7 @@ public class HouseView {
             key = Utility.readChar();
             switch (key) {
                 case '1' :
-                    System.out.println("新 增");
+                    addHouse();
                     break;
                 case '2' :
                     System.out.println("查 找");
