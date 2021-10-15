@@ -8,5 +8,7 @@ public class HoseRentApp {
         new HouseView().mianView();
         System.out.println("===你退出房屋出租系统===");
 
+
+
     }
 }
