@@ -15,6 +15,27 @@ public class HouseView {
     private char key = ' '; //接收用户选择的选择
     private  HouseService houseService = new HouseService(10);//设置数组的大小为10
 
+    //编写delHouse() 接收输入的id，调用House对象，调用add方法
+    public  void delHouse() {
+        System.out.println("===============删除房屋信息=============");
+        System.out.println("请输入待删除房屋房屋的编号（-1退出）：");
+        int delId =Utility.readInt();
+        if(delId == -1){
+            System.out.println("===============放弃删除房屋信息=============");
+            return;
+        }
+        //该方法本身就有循环判断的逻辑，必须输入Y/N
+        char choice = Utility.readConfirmSelection();
+        if(choice =='Y' ){//真的删除
+            if (houseService.del(delId)){
+                System.out.println("===============删除房屋信息成功=============");
+            }else {
+                System.out.println("===============房屋编号不存在，删除失败=============");
+            }
+        }else {
+            System.out.println("===============放弃删除房屋信息=============");
+        }
+    }
 
     //编写addHouse() 接收输入，创建House对象，调用add方法
     public void addHouse() {
@@ -72,7 +93,7 @@ public class HouseView {
                     System.out.println("查 找");
                     break;
                 case '3' :
-                    System.out.println("删 除");
+                    delHouse();
                     break;
                 case '4' :
                     System.out.println("修 改");

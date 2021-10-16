@@ -10,7 +10,5 @@ public class HoseRentApp {
         System.out.println("测试");
 
 
-
-
     }
 }
