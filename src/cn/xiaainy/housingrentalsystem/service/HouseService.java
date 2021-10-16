@@ -19,6 +19,17 @@ public class HouseService {
         //为了配合测试列表信息，这里初始化一个House对象
         houses[0] = new House(1,"jack","112","海淀区",2000,"未出租");
     }
+
+    //findById方法，返回house对象或者返回null
+    public House findById(int findId) {
+        for (int i = 0; i < houseNums; i++) {
+                if (findId == houses[i].getId()) {
+                    return houses[i];
+                }
+        }
+        return null;
+    }
+
     //del方法，删除一个房屋信息
     public boolean del(int delId){
         //应当先找到要删除的房屋信息对应的下标
@@ -36,7 +47,7 @@ public class HouseService {
         for(int i = index; i < houseNums - 1; i++){
             houses[i] = houses[i+1];
         }
-        houses[--houseNums] =null;//把当前存在的房屋信息的最后一个 设置为null
+        houses[--houseNums]  =null;//把当前存在的房屋信息的最后一个 设置为null
         return true;
     }
 
